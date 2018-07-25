@@ -5,6 +5,11 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
     {
+        path: '',
+        redirectTo: '/cloudmusic',
+        pathMatch: 'full'
+    },
+    {
         path: 'cloudmusic',
         loadChildren: '../app/cloud-music/cloud-music.module#CloudMusicModule'
     },

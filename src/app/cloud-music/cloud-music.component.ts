@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cloud-music.component.scss']
 })
 export class CloudMusicComponent implements OnInit {
-
+  placeholderTitle: string;
   constructor() { }
 
   ngOnInit() {
+    this.placeholderTitle = '搜索音乐';
   }
 
 }
