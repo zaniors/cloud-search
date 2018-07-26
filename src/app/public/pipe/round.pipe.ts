@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class RoundPipe implements PipeTransform {
 
   transform(number, precision) {
-    return Math.round(+number + 'e' + precision) / Math.pow(10, precision);
+    return Math.round(+(number + 'e' + precision)) / Math.pow(10, precision);
   }
 
 }
