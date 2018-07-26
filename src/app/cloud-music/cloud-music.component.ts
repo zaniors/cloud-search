@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CloudMusicComponent implements OnInit {
   placeholderTitle: string;
+  type: string;
   constructor() { }
 
   ngOnInit() {
     this.placeholderTitle = '搜索音乐';
+    this.type = 'cloudmusic';
   }
 
 }

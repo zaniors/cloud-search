@@ -2,8 +2,18 @@
     max-width: 400px;
     margin: 0 auto 20px;
 }
-∑
+
 .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
+}
+
+.repo-actions {
+    font-size: 12px;
+    text-align: right;
+    color: #9b9b9b;
+    .repo-language {
+        line-height: 36px;
+        padding: 0 16px;
+        float: left;
+    }
 }

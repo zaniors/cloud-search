@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { OwnGithubItem } from '../../model/github-item.model';
 
 @Component({
   selector: 'app-card-item',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardItemComponent implements OnInit {
 
+  @Input() searchResultItem: OwnGithubItem;
   constructor() { }
 
   ngOnInit() {

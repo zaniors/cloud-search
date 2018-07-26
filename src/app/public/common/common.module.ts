@@ -4,6 +4,7 @@ import { MaterialModule } from '../../shared/materail.module';
 import { SharedModule } from '../../shared/shared.module';
 import { CardItemComponent } from './card-item/card-item.component';
 import { CardListComponent } from './card-list/card-list.component';
+import { RoundPipe } from '../pipe/round.pipe';
 
 @NgModule({
     imports: [
@@ -14,10 +15,13 @@ import { CardListComponent } from './card-list/card-list.component';
         SearchComponent,
         CardItemComponent,
         CardListComponent,
+        RoundPipe,
     ],
     exports: [
         SearchComponent,
+        CardItemComponent,
         CardListComponent,
+        RoundPipe,
     ],
 })
 export class AppCommonModule { }

@@ -1,5 +1,7 @@
-<app-card-item></app-card-item>
-<app-card-item></app-card-item>
-<app-card-item></app-card-item>
-<app-card-item></app-card-item>
-<app-card-item></app-card-item>
+<ng-container *ngIf="searchResult.type === 'github'">
+    <app-card-item *ngFor="let item of searchResult.items" [searchResultItem]="item"></app-card-item>
+</ng-container>
+
+<ng-container *ngIf="searchResult.type === 'cloudmusic'">
+    <p>暂无数据</p>
+</ng-container>
