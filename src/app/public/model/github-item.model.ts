@@ -13,6 +13,11 @@ export class OwnGithubItem {
     watchersCount: number;
 }
 
+export class OwnGithubSearchOutput {
+    type: string;
+    items: OwnGithubItem[];
+}
+
 export interface GithubSearchOutput {
     items: GithubRepositoriesItem[];
 }
