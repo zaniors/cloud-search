@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app.routing';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './shared/materail.module';
+import { PublicModule } from './public/public.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,6 +18,7 @@ import { MaterialModule } from './shared/materail.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    PublicModule,
     AppRoutingModule
   ],
   exports: [

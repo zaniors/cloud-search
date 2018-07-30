@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { fromEvent, Observable, of } from 'rxjs';
-import { tap, pluck, map, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { tap, pluck, map, debounceTime, distinctUntilChanged, switchMap, finalize } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { ServiceApi } from '../../enum/service-api.enum';
 import { OwnGithubItem, GithubRepositoriesItem, GithubSearchOutput, OwnGithubSearchOutput } from '../../model/github-item.model';
@@ -48,8 +48,10 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   private getGithubData(val: string): Observable<OwnGithubSearchOutput> {
+    this.eventBusService.progressLoading.next(true);
     const URL = `${ServiceApi.GithubSearchRepos}${val}`;
     return this.httpClient.get<OwnGithubItem[]>(URL).pipe(
+      finalize(() => this.eventBusService.progressLoading.next(false)),
       switchMap((res: GithubSearchOutput) => {
         return of(this.dataTransformObject(res.items));
       })

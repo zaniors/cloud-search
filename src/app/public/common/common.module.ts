@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { CardItemComponent } from './card-item/card-item.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { RoundPipe } from '../pipe/round.pipe';
+import { ProgressBusyComponent } from './progress-busy/progress-busy.component';
 
 @NgModule({
     imports: [
@@ -15,12 +16,14 @@ import { RoundPipe } from '../pipe/round.pipe';
         SearchComponent,
         CardItemComponent,
         CardListComponent,
+        ProgressBusyComponent,
         RoundPipe,
     ],
     exports: [
         SearchComponent,
         CardItemComponent,
         CardListComponent,
+        ProgressBusyComponent,
         RoundPipe,
     ],
 })

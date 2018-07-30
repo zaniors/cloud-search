@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 export class EventBusService {
 
     public githubRepoSearch: Subject<OwnGithubSearchOutput> = new Subject<OwnGithubSearchOutput>();
+    public progressLoading: Subject<boolean> = new Subject<boolean>();
     constructor() { }
 
 }

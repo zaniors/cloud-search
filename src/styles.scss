@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+    margin: 0;
+}
+
+.mat-drawer-content {
+    padding: 0 20px;
+}
+
 .material-icons.md-12 {
     font-size: 12px;
 }
@@ -35,4 +43,15 @@
     font-weight: normal;
     min-width: auto;
     padding: 0 4px;
+}
+
+.progress-container {
+    position: relative;
+    top: 120px;
+    z-index: 999;
+    padding: 0 30px;
+}
+
+.mat-progress-bar {
+    height: 3px !important;
 }
