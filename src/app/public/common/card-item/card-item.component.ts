@@ -11,6 +11,7 @@ import { routerTranAni } from '../../animations/router.animation';
 export class CardItemComponent implements OnInit {
 
   @Input() searchResultItem: OwnGithubItem;
+  @Input() type: string;
   constructor() { }
 
   ngOnInit() {

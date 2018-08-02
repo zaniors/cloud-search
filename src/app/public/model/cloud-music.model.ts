@@ -12,9 +12,16 @@ export class OwnArtistName {
     artistName: string;
 }
 
+export class OwnCloudMusicOutput {
+    type: string;
+    items: OwnCloudMusicItem[];
+}
+
 export interface CloudMusicSong {
-    songs: CloudMusicSongItem[];
-    songCount: number;
+    result: {
+        songs: CloudMusicSongItem[];
+        songCount: number;
+    };
 }
 
 export interface CloudMusicSongItem {

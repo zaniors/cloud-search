@@ -17,3 +17,11 @@
         float: left;
     }
 }
+
+.card-image {
+    overflow: hidden;
+    img {
+        transform: scale(1.1);
+        filter: blur(4px);
+    }
+}

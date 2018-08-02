@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EventBusService } from '../../service/bus-event.service';
 import { OwnGithubSearchOutput } from '../../model/github-item.model';
+import { OwnCloudMusicOutput } from '../../model/cloud-music.model';
 
 @Component({
   selector: 'app-card-list',
@@ -8,12 +9,12 @@ import { OwnGithubSearchOutput } from '../../model/github-item.model';
   styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit {
-  searchResult: OwnGithubSearchOutput = new OwnGithubSearchOutput();
+  searchResult: OwnGithubSearchOutput | OwnCloudMusicOutput = new OwnGithubSearchOutput();
 
   constructor(
     private eventBusService: EventBusService,
   ) {
-    eventBusService.githubRepoSearch
+    eventBusService.searchResult
       .subscribe(res => this.searchResult = res);
   }
 

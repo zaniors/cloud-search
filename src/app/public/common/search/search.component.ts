@@ -6,6 +6,8 @@ import { ServiceApi } from '../../enum/service-api.enum';
 import { OwnGithubItem, GithubRepositoriesItem, GithubSearchOutput, OwnGithubSearchOutput } from '../../model/github-item.model';
 import { EventBusService } from '../../service/bus-event.service';
 import { GithubApiService } from '../../service/github-api.service';
+import { CloudMusicApiService } from '../../service/cloudmusic-api.service';
+import { OwnCloudMusicOutput } from '../../model/cloud-music.model';
 
 @Component({
   selector: 'app-search',
@@ -21,6 +23,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     private httpClient: HttpClient,
     private eventBusService: EventBusService,
     private githubApiService: GithubApiService,
+    private cloudMusicApiService: CloudMusicApiService,
   ) { }
 
   ngOnInit() {
@@ -30,17 +33,20 @@ export class SearchComponent implements OnInit, AfterViewInit {
     this.getSearchValue()
       .subscribe(res => {
         console.log(res);
-        this.eventBusService.githubRepoSearch.next(res);
+        this.eventBusService.searchResult.next(res);
       });
   }
 
-  private getSearchValue(): Observable<OwnGithubSearchOutput> {
+  private getSearchValue(): Observable<OwnGithubSearchOutput | OwnCloudMusicOutput> {
     return fromEvent(this.searchInput.nativeElement, 'keyup')
       .pipe(
         // 优化事件流，在一定的时间内多次keyup事件会被舍掉
         debounceTime(400),
         // 获取input的value值
         pluck<KeyboardEvent, string>('target', 'value'),
+        tap(val => {
+          console.log(val);
+        }),
         // 删除字符串两边的空白字符
         map(val => val.trim()),
         // 只有当值与之前的值不同时，才发出(而且方向键/alt等等，不会改变值，所以也不会发出)
@@ -52,7 +58,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
             this.githubApiService.type = this.type;
             return this.githubApiService.getGithubData(val);
           } else if (this.type === 'cloudmusic') {
-            return empty();
+            this.cloudMusicApiService.type = this.type;
+            return this.cloudMusicApiService.getCloudMusicData(val);
           }
         })
       );

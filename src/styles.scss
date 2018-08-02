@@ -47,11 +47,15 @@ body {
 
 .progress-container {
     position: relative;
-    top: 120px;
+    bottom: 20px;
     z-index: 999;
-    padding: 0 30px;
 }
 
 .mat-progress-bar {
     height: 3px !important;
+}
+
+.mat-card-content>:last-child:not(.mat-card-footer),
+.mat-card>:last-child:not(.mat-card-footer) {
+    margin-bottom: -24px;
 }
