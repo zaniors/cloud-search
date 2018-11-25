@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { timer, Subscription, Observable } from 'rxjs';
-import { map, tap, delay, takeWhile } from 'rxjs/operators';
+import { timer, Subscription, Observable, of } from 'rxjs';
+import { map, tap, delay, takeWhile, switchMap } from 'rxjs/operators';
 import { EventBusService } from '../../service/bus-event.service';
 
 @Component({
@@ -28,7 +28,8 @@ export class ProgressBusyComponent implements OnInit {
   private initProgressBar(): Observable<number> {
     return timer(0, 100).pipe(
       map(_ => this.progressValue += 5),
-      takeWhile(val => val <= 90)
+      takeWhile(val => val <= 90),
+      // switchMap(val => of(val))
     );
   }
 
@@ -42,9 +43,11 @@ export class ProgressBusyComponent implements OnInit {
 
   private update(): void {
     const callback = this.loading ? () => {
-      this.progress$ = this.initProgressBar().subscribe();
+      this.progress$ = this.initProgressBar().subscribe(res => console.log(res));
+      console.log(this.progress$);
     } : () => {
       this.revert();
+      console.log(this.progress$);
     };
     return callback();
   }

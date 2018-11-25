@@ -30,6 +30,16 @@ export class CloudMusicApiService {
         );
     }
 
+    public getMusicUrl(id: number): Observable<string> {
+        const URL = `${ServiceApi.CloudMusicSongUrl}${id}`;
+        return this.httpClient
+        .get<string>(URL).pipe(
+            switchMap((res: any) => {
+                return of(res.data[0].url);
+            })
+        );
+    }
+
     private dataTransformObject(res: CloudMusicSongItem[]): OwnCloudMusicOutput {
         const ownGithubSearchOutput: OwnCloudMusicOutput = new OwnCloudMusicOutput();
         const musicItems: OwnCloudMusicItem[] = [];

@@ -19,6 +19,7 @@
 }
 
 .card-image {
+    position: relative;
     overflow: hidden;
     img {
         transform: scale(1.1);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-player',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
 
+  @Output() playHandle: EventEmitter<void> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  onplay(): void {
+    this.playHandle.emit();
+  }
 }

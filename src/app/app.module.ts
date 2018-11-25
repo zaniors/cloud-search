@@ -5,20 +5,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from './shared/materail.module';
 import { PublicModule } from './public/public.module';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
+    SharedModule,
     PublicModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
   exports: [

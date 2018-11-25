@@ -32,7 +32,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.getSearchValue()
       .subscribe(res => {
-        console.log(res);
         this.eventBusService.searchResult.next(res);
       });
   }
@@ -44,9 +43,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
         debounceTime(400),
         // 获取input的value值
         pluck<KeyboardEvent, string>('target', 'value'),
-        tap(val => {
-          console.log(val);
-        }),
+        // tap(val => {
+        // }),
         // 删除字符串两边的空白字符
         map(val => val.trim()),
         // 只有当值与之前的值不同时，才发出(而且方向键/alt等等，不会改变值，所以也不会发出)

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OwnGithubItem } from '../../model/github-item.model';
 import { routerTranAni } from '../../animations/router.animation';
+import { CloudMusicApiService } from '../../service/cloudmusic-api.service';
+import { OwnCloudMusicItem } from '../../model/cloud-music.model';
 
 @Component({
   selector: 'app-card-item',
@@ -9,12 +11,25 @@ import { routerTranAni } from '../../animations/router.animation';
   animations: [routerTranAni]
 })
 export class CardItemComponent implements OnInit {
+  audioEle: HTMLAudioElement;
 
-  @Input() searchResultItem: OwnGithubItem;
+  @Input() searchResultItem: any;
   @Input() type: string;
-  constructor() { }
+  constructor(
+    private cloudMusicApiService: CloudMusicApiService,
+  ) { }
 
   ngOnInit() {
+    this.audioEle = new Audio();
+  }
+
+  play(): void {
+    this.audioEle.pause();
+    this.cloudMusicApiService.getMusicUrl(this.searchResultItem.songId)
+      .subscribe(url => {
+        this.audioEle.src = url;
+        this.audioEle.play();
+      });
   }
 
 }
